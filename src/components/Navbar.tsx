@@ -1,3 +1,102 @@
+// import Box from "@mui/material/Box";
+// import Drawer from "@mui/material/Drawer";
+// import AppBar from "@mui/material/AppBar";
+// import CssBaseline from "@mui/material/CssBaseline";
+// import Toolbar from "@mui/material/Toolbar";
+// import List from "@mui/material/List";
+// import Typography from "@mui/material/Typography";
+// import Divider from "@mui/material/Divider";
+// import ListItem from "@mui/material/ListItem";
+// import ListItemButton from "@mui/material/ListItemButton";
+// import ListItemText from "@mui/material/ListItemText";
+// import { useContext } from "react";
+// import { AppContext } from "../Providers/AppProvider";
+// import { useTheme } from "@mui/material/styles";
+// import Button from "@mui/material/Button/Button";
+
+// const drawerWidth = 350;
+
+// const Navbar = ({ children }) => {
+//   const { allGears, setToActive } = useContext(AppContext);
+//   const theme = useTheme(); 
+
+//   return (
+//     <Box sx={{ display: "flex" }}>
+//       <CssBaseline />
+//       <AppBar
+//         position="fixed"
+//         sx={{ zIndex: theme.zIndex.drawer + 1 }} 
+//       >
+//         <Toolbar>
+//           <Typography
+//             variant="h6"
+//             noWrap
+//             component="div"
+//             sx={{ textAlign: "center", width: "100%" }}
+//           >
+//             PSC Motorsports
+//           </Typography>
+// 		  <Button variant="contained" size="small" sx={{bgcolor:theme.palette.secondary.dark}} >Log In</Button>
+//         </Toolbar>
+//       </AppBar>
+//       <Drawer
+//         variant="permanent"
+//         sx={{
+//           width: drawerWidth,
+//           flexShrink: 0,
+//           [`& .MuiDrawer-paper`]: {
+//             width: drawerWidth,
+//             boxSizing: "border-box",
+//             backgroundColor: theme.palette.secondary.light, 
+//           },
+//         }}
+//       >
+//         <Toolbar />
+//         <Box sx={{ overflow: "auto" }}>
+//           <List>
+//             <ListItem>
+//               <ListItemButton>
+//                 <ListItemText>+ Add New Gear</ListItemText>
+//               </ListItemButton>
+//             </ListItem>
+// 			<Divider />
+//             {allGears.map((gear) => (
+//               <ListItem key={gear.id}>
+//                 <ListItemButton
+// 				onClick={() => setToActive(gear)}
+//                   sx={{
+//                     justifyContent: "center",
+//                     bgcolor: "primary.main",
+//                     "&:hover": {
+//                       bgcolor: "primary.dark",
+//                       color: theme.palette.text.secondary,
+//                     },
+//                   }}
+//                 >
+//                   <ListItemText
+//                     primary={gear.partNumber}
+//                     sx={{
+//                       color: theme.palette.text.primary,
+//                       textAlign: "center",
+//                     }}
+//                   />
+//                 </ListItemButton>
+//               </ListItem>
+//             ))}
+//           </List>
+//           <Divider />
+//         </Box>
+//       </Drawer>
+//       <Box component="main" sx={{ flexGrow: 1, p: 3, bgcolor: theme.palette.secondary.light, maxWidth:5000 }}>
+// 	  {children}
+//       </Box>
+//     </Box>
+//   );
+// };
+
+// export default Navbar;
+
+
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import AppBar from "@mui/material/AppBar";
@@ -9,101 +108,93 @@ import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
-import { useContext } from "react";
+import { ReactNode, useContext } from "react";
 import { AppContext } from "../Providers/AppProvider";
 import { useTheme } from "@mui/material/styles";
+import Button from "@mui/material/Button";
+
+interface NavbarProps {
+	children: ReactNode; // Define children prop as ReactNode
+  }
 
 const drawerWidth = 350;
 
-const Navbar = () => {
-	const { allGears } = useContext(AppContext);
-	const theme = useTheme(); // Correctly destructure the theme object
+const Navbar = ({ children }: NavbarProps) => {
+  const { allGears, setToActive } = useContext(AppContext);
+  const theme = useTheme(); 
 
-	return (
-		<Box sx={{ display: "flex" }}>
-			<CssBaseline />
-			<AppBar
-				position="fixed"
-				sx={{ zIndex: theme.zIndex.drawer + 1 }} // Use the theme object
-			>
-				<Toolbar>
-					<Typography
-						variant="h6"
-						noWrap
-						component="div"
-						sx={{ textAlign: "center", width: "100%" }}
-					>
-						PSC Motorsports
-					</Typography>
-				</Toolbar>
-			</AppBar>
-			<Drawer
-				variant="permanent"
-				sx={{
-					width: drawerWidth,
-					flexShrink: 0,
-					[`& .MuiDrawer-paper`]: {
-						width: drawerWidth,
-						boxSizing: "border-box",
-						backgroundColor: theme.palette.background.paper, // Use the theme background color
-					},
-				}}
-			>
-				<Toolbar />
-				<Box sx={{ overflow: "auto" }}>
-					<List>
-						{allGears.map((gear) => (
-							<ListItem key={gear.id} disablePadding>
-								<ListItemButton sx={{ justifyContent: "center" }}>
-									<ListItemText
-										primary={gear.partNumber}
-										sx={{
-											color: theme.palette.text.secondary,
-											textAlign: "center",
-										}}
-									/>
-								</ListItemButton>
-							</ListItem>
-						))}
-					</List>
-					<Divider />
-					<List></List>
-				</Box>
-			</Drawer>
-			<Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-				<Toolbar />
-				<Typography paragraph align="center">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-					eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus
-					dolor purus non enim praesent elementum facilisis leo vel. Risus at
-					ultrices mi tempus imperdiet. Semper risus in hendrerit gravida rutrum
-					quisque non tellus. Convallis convallis tellus id interdum velit
-					laoreet id donec ultrices. Odio morbi quis commodo odio aenean sed
-					adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies
-					integer quis. Cursus euismod quis viverra nibh cras. Metus vulputate
-					eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo
-					quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat
-					vivamus at augue. At augue eget arcu dictum varius duis at consectetur
-					lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa sapien
-					faucibus et molestie ac.
-				</Typography>
-				<Typography paragraph align="center">
-					Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
-					ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar
-					elementum integer enim neque volutpat ac tincidunt. Ornare suspendisse
-					sed nisi lacus sed viverra tellus. Purus sit amet volutpat consequat
-					mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis
-					risus sed vulputate odio. Morbi tincidunt ornare massa eget egestas
-					purus viverra accumsan in. In hendrerit gravida rutrum quisque non
-					tellus orci ac. Pellentesque nec nam aliquam sem et tortor. Habitant
-					morbi tristique senectus et. Adipiscing elit duis tristique
-					sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
-					eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
-					posuere sollicitudin aliquam ultrices sagittis orci a.
-				</Typography>
-			</Box>
-		</Box>
-	);
+  return (
+    <Box sx={{ display: "flex" }}>
+      <CssBaseline />
+      <AppBar
+        position="fixed"
+        sx={{ zIndex: theme.zIndex.drawer + 1 }} 
+      >
+        <Toolbar>
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{ textAlign: "center", width: "100%" }}
+          >
+            PSC Motorsports
+          </Typography>
+          <Button variant="contained" size="small" sx={{bgcolor:theme.palette.secondary.dark}} >Log In</Button>
+        </Toolbar>
+      </AppBar>
+      <Drawer
+        variant="permanent"
+        sx={{
+          width: drawerWidth,
+          flexShrink: 0,
+          [`& .MuiDrawer-paper`]: {
+            width: drawerWidth,
+            boxSizing: "border-box",
+            backgroundColor: theme.palette.secondary.light, 
+          },
+        }}
+      >
+        <Toolbar />
+        <Box sx={{ overflow: "auto" }}>
+          <List>
+            <ListItem>
+              <ListItemButton>
+                <ListItemText>+ Add New Gear</ListItemText>
+              </ListItemButton>
+            </ListItem>
+            <Divider />
+            {allGears.map((gear) => (
+              <ListItem key={gear.id}>
+                <ListItemButton
+                  onClick={() => setToActive(gear)}
+                  sx={{
+                    justifyContent: "center",
+                    bgcolor: "primary.main",
+                    "&:hover": {
+                      bgcolor: "primary.dark",
+                      color: theme.palette.text.secondary,
+                    },
+                  }}
+                >
+                  <ListItemText
+                    primary={gear.partNumber}
+                    sx={{
+                      color: theme.palette.text.primary,
+                      textAlign: "center",
+                    }}
+                  />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+          <Divider />
+        </Box>
+      </Drawer>
+      <Box component="main" sx={{ flexGrow: 1, p: 3, bgcolor: theme.palette.secondary.light, maxWidth: 5000 }}>
+        {children}
+      </Box>
+    </Box>
+  );
 };
 
 export default Navbar;

@@ -28,19 +28,6 @@ const theme = createTheme({
 			textTransform: "none", // Disable uppercase transformation for buttons
 		},
 	},
-	components: {
-		MuiButton: {
-			styleOverrides: {
-				root: {
-					color: "#fff",
-					backgroundColor: "#ca2328",
-					"&:hover": {
-						backgroundColor: "#a81e1f",
-					},
-				},
-			},
-		},
-	},
 });
 
 const PSCThemeProvider: React.FC<{ children: React.ReactNode }> = ({
