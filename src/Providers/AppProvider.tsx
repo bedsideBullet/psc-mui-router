@@ -14,6 +14,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 	const [displayAddForm, setDisplayAddForm] = useState<boolean>(false);
 	const [displayNotesForm, setDisplayNotesForm] = useState<boolean>(false);
 	const [notes, setNotes] = useState<Note[]>([]);
+	const [activeNote, setActiveNote] = useState<Note| null>(null);
 	const [activeSteeringGear, setActiveSteeringGear] =
 		useState<SteeringGear | null>(null);
 
@@ -38,11 +39,21 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 		fetchData();
 		fetchUsers();
 		fetchNotes();
+		
+		// Check for a logged-in user in local storage
+		const storedUser = localStorage.getItem('activeUser');
+		if (storedUser) {
+			setActiveUser(JSON.parse(storedUser));
+		}
 	}, []);
 
 	const setToActive = (gear: SteeringGear) => {
 		setActiveSteeringGear(gear);
 	};
+
+	const setNoteActive = (note: Note) => {
+		setActiveNote(note)
+	}
 
 	const logIn = (userName: string, password: string) => {
 		const user = users.find(
@@ -50,12 +61,19 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 		);
 		if (user) {
 			setActiveUser(user);
+			localStorage.setItem('activeUser', JSON.stringify(user));
 			toast.success("Logged in successfully");
 			setDisplayLoginForm(false);
 		} else {
 			toast.error("Invalid username or password");
 		}
 	};
+
+	const logOut = () => {
+		setActiveUser(null);
+			localStorage.setItem('activeUser', JSON.stringify(null));
+			toast.success("Logged out successfully");
+	}
 
 	const createGear = (gear: Omit<SteeringGear, "id">) => {
 		return Requests.postGear(gear)
@@ -106,6 +124,10 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 		notes,
 		displayNotesForm,
 		setDisplayNotesForm,
+		logOut,
+		setNoteActive,
+		activeNote,
+		setActiveNote
 	};
 
 	return (

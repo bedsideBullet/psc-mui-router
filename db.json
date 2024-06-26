@@ -39,34 +39,40 @@
 			"userId": 1,
 			"gearId": 1,
 			"content": "this is a note for gear 1",
-			"id": "1f8b"
+			"id": "1f8b",
+			"title": "u1g1"
 		},
 		{
 			"userId": 1,
 			"gearId": 2,
 			"content": "this is a note for gear 2",
-			"id": "078e"
+			"id": "078e",
+			"title": "u1g2"
 		},
 		{
 			"userId": 1,
 			"gearId": 3,
 			"content": "this is a note for gear 3",
-			"id": "12aa"
+			"id": "12aa",
+			"title": "u1g3"
 		},
 		{
 			"userId": 2,
 			"gearId": 1,
-			"content": "this is a note for Austin gear 1"
+			"content": "this is a note for Austin gear 1",
+			"title": "u2g1"
 		},
 		{
 			"userId": 2,
 			"gearId": 2,
-			"content": "this is a note for Austin gear 2"
+			"content": "this is a note for Austin gear 2",
+			"title": "u2g2"
 		},
 		{
 			"userId": 2,
 			"gearId": 3,
-			"content": "this is a note for Austin gear 3"
+			"content": "this is a note for Austin gear 3",
+			"title": "u2g3"
 		}
 	],
 	"users": [
