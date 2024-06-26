@@ -14,11 +14,20 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 	const [displayAddForm, setDisplayAddForm] = useState<boolean>(false);
 	const [displayNotesForm, setDisplayNotesForm] = useState<boolean>(false);
 	const [notes, setNotes] = useState<Note[]>([]);
-	const [activeNote, setActiveNote] = useState<Note| null>(null);
+	const [activeNote, setActiveNote] = useState<Note | null>(null);
 	const [activeSteeringGear, setActiveSteeringGear] =
 		useState<SteeringGear | null>(null);
 
-	const fetchData = () => {
+	// const fetchData = (): Promise<void> => {
+	// 	return Requests.getAllGears().then((gears) => {
+	// 		setAllGears(gears);
+	// 		if (gears.length > 0) {
+	// 			setActiveSteeringGear(gears[0]);
+	// 		}
+	// 	});
+	// };
+
+	const fetchData = (): Promise<void> => {
 		return Requests.getAllGears().then((gears) => {
 			setAllGears(gears);
 			if (gears.length > 0) {
@@ -39,9 +48,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 		fetchData();
 		fetchUsers();
 		fetchNotes();
-		
-		// Check for a logged-in user in local storage
-		const storedUser = localStorage.getItem('activeUser');
+		const storedUser = localStorage.getItem("activeUser");
 		if (storedUser) {
 			setActiveUser(JSON.parse(storedUser));
 		}
@@ -52,8 +59,8 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 	};
 
 	const setNoteActive = (note: Note) => {
-		setActiveNote(note)
-	}
+		setActiveNote(note);
+	};
 
 	const logIn = (userName: string, password: string) => {
 		const user = users.find(
@@ -61,7 +68,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 		);
 		if (user) {
 			setActiveUser(user);
-			localStorage.setItem('activeUser', JSON.stringify(user));
+			localStorage.setItem("activeUser", JSON.stringify(user));
 			toast.success("Logged in successfully");
 			setDisplayLoginForm(false);
 		} else {
@@ -71,11 +78,19 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 
 	const logOut = () => {
 		setActiveUser(null);
-			localStorage.setItem('activeUser', JSON.stringify(null));
-			toast.success("Logged out successfully");
-	}
+		localStorage.setItem("activeUser", JSON.stringify(null));
+		toast.success("Logged out successfully");
+	};
 
-	const createGear = (gear: Omit<SteeringGear, "id">) => {
+	// const createGear = (gear: Omit<SteeringGear, "id">): Promise<void> => {
+	// 	return Requests.postGear(gear)
+	// 		.then(() => fetchData())
+	// 		.then(() => {
+	// 			toast.success("New Steering Gear added");
+	// 		});
+	// };
+
+	const createGear = (gear: Omit<SteeringGear, "id">): Promise<void> => {
 		return Requests.postGear(gear)
 			.then(() => fetchData())
 			.then(() => {
@@ -94,12 +109,11 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 			);
 
 			if (matchingNote) {
-				console.log("Found matching note:", matchingNote);
 				return matchingNote.content;
 			}
 		}
 
-		return "No Notes";
+		return "Log in to see your notes on this part";
 	};
 
 	const contextValue = {
@@ -127,7 +141,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 		logOut,
 		setNoteActive,
 		activeNote,
-		setActiveNote
+		setActiveNote,
 	};
 
 	return (

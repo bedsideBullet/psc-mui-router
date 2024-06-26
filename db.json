@@ -1,116 +1,130 @@
 {
-	"gearData": [
-		{
-			"id": "1",
-			"input": "JK",
-			"partNumber": "SG688/R",
-			"rotation": "Reverse",
-			"mountLocation": "Inside Frame",
-			"ratio": "16.5:1",
-			"sectorSpline": "4-44",
-			"pitmanArmDirection": "Rear",
-			"image": "https://www.pscmotorsports.com/media/catalog/product/cache/76f8089a7e73bdbcbc5a55caf73fceb6/s/g/sg688r_img_5546_rs_800x600.jpg"
-		},
-		{
-			"id": "2",
-			"input": "DD",
-			"partNumber": "SG039/R",
-			"rotation": "Standard",
-			"mountLocation": "Inside Frame",
-			"ratio": "14:01",
-			"sectorSpline": "4-36",
-			"pitmanArmDirection": "Forward",
-			"image": "https://www.pscmotorsports.com/media/catalog/product/cache/76f8089a7e73bdbcbc5a55caf73fceb6/s/g/sg039r.jpg"
-		},
-		{
-			"id": "3",
-			"input": "JK",
-			"partNumber": "SG062R",
-			"rotation": "Reverse",
-			"mountLocation": "Inside Frame",
-			"ratio": "16.5:1",
-			"sectorSpline": "4-36",
-			"pitmanArmDirection": "Rear",
-			"image": "https://www.pscmotorsports.com/media/catalog/product/cache/76f8089a7e73bdbcbc5a55caf73fceb6/d/s/dsc_0065-2_2.jpg"
-		}
-	],
-	"notes": [
-		{
-			"userId": 1,
-			"gearId": 1,
-			"content": "this is a note for gear 1",
-			"id": "1f8b",
-			"title": "u1g1"
-		},
-		{
-			"userId": 1,
-			"gearId": 2,
-			"content": "this is a note for gear 2",
-			"id": "078e",
-			"title": "u1g2"
-		},
-		{
-			"userId": 1,
-			"gearId": 3,
-			"content": "this is a note for gear 3",
-			"id": "12aa",
-			"title": "u1g3"
-		},
-		{
-			"userId": 2,
-			"gearId": 1,
-			"content": "this is a note for Austin gear 1",
-			"title": "u2g1"
-		},
-		{
-			"userId": 2,
-			"gearId": 2,
-			"content": "this is a note for Austin gear 2",
-			"title": "u2g2"
-		},
-		{
-			"userId": 2,
-			"gearId": 3,
-			"content": "this is a note for Austin gear 3",
-			"title": "u2g3"
-		}
-	],
-	"users": [
-		{
-			"id": "1",
-			"userName": "Daniel",
-			"password": "password",
-			"admin": true
-		},
-		{
-			"id": "2",
-			"userName": "Austin",
-			"password": "password",
-			"admin": false
-		},
-		{
-			"id": "3",
-			"userName": "Kelvin",
-			"password": "password",
-			"admin": false
-		},
-		{
-			"id": "4",
-			"userName": "Keegan",
-			"password": "password",
-			"admin": false
-		},
-		{
-			"id": "5",
-			"userName": "Riley",
-			"password": "password",
-			"admin": false
-		},
-		{
-			"id": "6",
-			"userName": "Felicia",
-			"password": "password",
-			"admin": true
-		}
-	]
+  "gearData": [
+    {
+      "id": "1",
+      "input": "JK",
+      "partNumber": "SG688/R",
+      "rotation": "Reverse",
+      "mountLocation": "Inside Frame",
+      "ratio": "16.5:1",
+      "sectorSpline": "4-44",
+      "pitmanArmDirection": "Rear",
+      "image": "https://www.pscmotorsports.com/media/catalog/product/cache/76f8089a7e73bdbcbc5a55caf73fceb6/s/g/sg688r_img_5546_rs_800x600.jpg"
+    },
+    {
+      "id": "2",
+      "input": "DD",
+      "partNumber": "SG039/R",
+      "rotation": "Standard",
+      "mountLocation": "Inside Frame",
+      "ratio": "14:01",
+      "sectorSpline": "4-36",
+      "pitmanArmDirection": "Forward",
+      "image": "https://www.pscmotorsports.com/media/catalog/product/cache/76f8089a7e73bdbcbc5a55caf73fceb6/s/g/sg039r.jpg"
+    },
+    {
+      "id": "3",
+      "input": "JK",
+      "partNumber": "SG062R",
+      "rotation": "Reverse",
+      "mountLocation": "Inside Frame",
+      "ratio": "16.5:1",
+      "sectorSpline": "4-36",
+      "pitmanArmDirection": "Rear",
+      "image": "https://www.pscmotorsports.com/media/catalog/product/cache/76f8089a7e73bdbcbc5a55caf73fceb6/d/s/dsc_0065-2_2.jpg"
+    },
+    {
+      "id": "9805",
+      "image": "src/assets/images/img_placeholder_2.jpg",
+      "partNumber": "asdf",
+      "ratio": "asd",
+      "rotation": "asf",
+      "sectorSpline": "asf",
+      "input": "asd",
+      "mountLocation": "asf",
+      "direction": "asf"
+    }
+  ],
+  "notes": [
+    {
+      "userId": 1,
+      "gearId": 1,
+      "content": "this is a note for gear 1",
+      "id": "1",
+      "title": "u1g1"
+    },
+    {
+      "userId": 1,
+      "gearId": 2,
+      "content": "this is a note for gear 2",
+      "id": "2",
+      "title": "u1g2"
+    },
+    {
+      "userId": 1,
+      "gearId": 3,
+      "content": "this is a note for gear 3",
+      "id": "3",
+      "title": "u1g3"
+    },
+    {
+      "userId": 2,
+      "gearId": 1,
+      "content": "this is a note for Austin gear 1",
+      "id": "4",
+      "title": "u2g1"
+    },
+    {
+      "userId": 2,
+      "gearId": 2,
+      "content": "this is a note for Austin gear 2",
+      "id": "5",
+      "title": "u2g2"
+    },
+    {
+      "userId": 2,
+      "gearId": 3,
+      "content": "this is a note for Austin gear 3",
+      "id": "6",
+      "title": "u2g3"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "userName": "Daniel",
+      "password": "password",
+      "admin": true
+    },
+    {
+      "id": "2",
+      "userName": "Austin",
+      "password": "password",
+      "admin": false
+    },
+    {
+      "id": "3",
+      "userName": "Kelvin",
+      "password": "password",
+      "admin": false
+    },
+    {
+      "id": "4",
+      "userName": "Keegan",
+      "password": "password",
+      "admin": false
+    },
+    {
+      "id": "5",
+      "userName": "Riley",
+      "password": "password",
+      "admin": false
+    },
+    {
+      "id": "6",
+      "userName": "Felicia",
+      "password": "password",
+      "admin": true
+    }
+  ]
 }

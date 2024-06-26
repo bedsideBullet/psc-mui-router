@@ -41,6 +41,7 @@ export const ActiveGear: React.FC = () => {
 			<Box
 				display="flex"
 				flexDirection="row"
+				flexWrap="wrap"
 				alignItems="center"
 				justifyContent="space-between"
 				gap={12}
@@ -63,6 +64,7 @@ export const ActiveGear: React.FC = () => {
 							variant="contained"
 							color="primary"
 							onClick={() => setDisplayNotesForm(true)}
+							size="large"
 						>
 							{noteDisplay()}
 						</Button>

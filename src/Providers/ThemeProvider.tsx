@@ -5,27 +5,27 @@ import React from "react";
 const theme = createTheme({
 	palette: {
 		primary: {
-			main: "#ca2328", // Your primary color
+			main: "#ca2328", // red
 		},
 		secondary: {
-			main: "#343a40", // Your secondary color
+			main: "#343a40", // grey
 		},
 		background: {
-			default: "#000", // Background color for the entire app
-			paper: "#fff", // Background color for components
+			default: "#000", // black
+			paper: "#fff", // white
 		},
 		text: {
-			primary: "#fff", // Text color for primary text
-			secondary: "#000", // Text color for secondary text
+			primary: "#fff", // white
+			secondary: "#000", // black
 		},
 	},
 	typography: {
-		fontFamily: "Arial, Helvetica, sans-serif", // Your font family
+		fontFamily: "Arial, Helvetica, sans-serif",
 		h1: {
-			fontSize: "3rem", // Custom font size for h1
+			fontSize: "3rem",
 		},
 		button: {
-			textTransform: "none", // Disable uppercase transformation for buttons
+			textTransform: "none",
 		},
 	},
 });

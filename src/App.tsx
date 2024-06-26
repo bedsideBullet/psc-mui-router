@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import WelcomePage from "./components/WelcomePage";
 import ActiveNote from "./components/ActiveNote";
+import AddGearForm from "./components/AddGearForm";
 
 const App = () => {
 	return (
@@ -14,9 +15,11 @@ const App = () => {
 				<Toaster />
 				<Navbar>
 					<Routes>
-						<Route path="/" element={<ActiveGear />} />
-						<Route path="/login" element={<LogInForm />} />
+						<Route path="/" element={<WelcomePage />} />
 						<Route path="/welcome" element={<WelcomePage />} />
+						<Route path="/active-gear" element={<ActiveGear />} />
+						<Route path="/add-gear" element={<AddGearForm />} />
+						<Route path="/login" element={<LogInForm />} />
 						<Route path="/active-note" element={<ActiveNote />} />
 					</Routes>
 				</Navbar>
