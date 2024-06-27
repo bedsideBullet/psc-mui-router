@@ -18,14 +18,6 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 	const [activeSteeringGear, setActiveSteeringGear] =
 		useState<SteeringGear | null>(null);
 
-	// const fetchData = (): Promise<void> => {
-	// 	return Requests.getAllGears().then((gears) => {
-	// 		setAllGears(gears);
-	// 		if (gears.length > 0) {
-	// 			setActiveSteeringGear(gears[0]);
-	// 		}
-	// 	});
-	// };
 
 	const fetchData = (): Promise<void> => {
 		return Requests.getAllGears().then((gears) => {
@@ -82,19 +74,40 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 		toast.success("Logged out successfully");
 	};
 
-	// const createGear = (gear: Omit<SteeringGear, "id">): Promise<void> => {
-	// 	return Requests.postGear(gear)
-	// 		.then(() => fetchData())
-	// 		.then(() => {
-	// 			toast.success("New Steering Gear added");
-	// 		});
-	// };
 
 	const createGear = (gear: Omit<SteeringGear, "id">): Promise<void> => {
 		return Requests.postGear(gear)
 			.then(() => fetchData())
 			.then(() => {
 				toast.success("New Steering Gear added");
+			});
+	};
+
+	const deleteGear = (id: number): Promise<void> => {
+		if (!id) {
+			toast.error("Failed to delete");
+			return Promise.resolve(); // Ensure a Promise<void> is always returned
+		}
+		return Requests.deleteGear(id)
+			.then(() => fetchData())
+			.then(() => {
+				toast.success("Steering Gear deleted");
+			})
+			.catch((error) => {
+				toast.error("Failed to delete");
+				console.error(error);
+			});
+	};
+
+	const createNote = (note: Omit<Note, "id">): Promise<void> => {
+		return Requests.postNote(note)
+			.then((newNote) => {
+				setNotes((prevNotes) => [...prevNotes, newNote]);
+				toast.success("Note added successfully");
+			})
+			.catch((error) => {
+				toast.error("Failed to add note");
+				console.error(error);
 			});
 	};
 
@@ -142,6 +155,8 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 		setNoteActive,
 		activeNote,
 		setActiveNote,
+		deleteGear,
+		createNote
 	};
 
 	return (

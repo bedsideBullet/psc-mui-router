@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { AppContext } from "../Providers/AppProvider";
-import { Box, Button, Stack, TextField, Typography } from "@mui/material";
+import { Box, Button, Stack, TextField, Typography, useTheme } from "@mui/material";
 import { useNavigate } from "react-router";
 
 const AddGearForm = () => {
@@ -12,8 +12,9 @@ const AddGearForm = () => {
 	const [mountLocation, setMountLocation] = useState<string>("");
 	const [direction, setDirection] = useState<string>("");
 
-	const { setDisplayCreateForm, createGear } = useContext(AppContext);
+	const { createGear } = useContext(AppContext);
 	const navigate = useNavigate();
+	const theme = useTheme();
 
 	const defaultImg = "src/assets/images/img_placeholder_2.jpg";
 
@@ -27,7 +28,7 @@ const AddGearForm = () => {
 		setDirection("");
 	};
 
-	const handleSubmit = (event: React.FormEvent) => {
+	const handleGearSubmit = (event: React.FormEvent) => {
 		event.preventDefault();
 		createGear({
 			image: defaultImg,
@@ -55,7 +56,7 @@ const AddGearForm = () => {
 	};
 
 	return (
-		<Box sx={style} component="form" onSubmit={handleSubmit}>
+		<Box sx={style} component="form" onSubmit={handleGearSubmit}>
 			<Typography id="add-gear-modal-title" variant="h6" component="h2">
 				+ Add New Gear
 			</Typography>
@@ -65,6 +66,9 @@ const AddGearForm = () => {
 				label="Part Number"
 				variant="outlined"
 				value={partNumber}
+				InputProps={{
+					sx: { color: theme.palette.text.secondary },
+				}}
 				onChange={(e) => setPartNumber(e.target.value)}
 				required
 			/>
@@ -74,6 +78,9 @@ const AddGearForm = () => {
 				label="Input"
 				variant="outlined"
 				value={input}
+				InputProps={{
+					sx: { color: theme.palette.text.secondary },
+				}}
 				onChange={(e) => setInput(e.target.value)}
 				required
 			/>
@@ -83,6 +90,9 @@ const AddGearForm = () => {
 				label="Ratio"
 				variant="outlined"
 				value={ratio}
+				InputProps={{
+					sx: { color: theme.palette.text.secondary },
+				}}
 				onChange={(e) => setRatio(e.target.value)}
 				required
 			/>
@@ -92,6 +102,9 @@ const AddGearForm = () => {
 				label="Rotation"
 				variant="outlined"
 				value={rotation}
+				InputProps={{
+					sx: { color: theme.palette.text.secondary },
+				}}
 				onChange={(e) => setRotation(e.target.value)}
 				required
 			/>
@@ -101,6 +114,9 @@ const AddGearForm = () => {
 				label="Mount Location"
 				variant="outlined"
 				value={mountLocation}
+				InputProps={{
+					sx: { color: theme.palette.text.secondary },
+				}}
 				onChange={(e) => setMountLocation(e.target.value)}
 				required
 			/>
@@ -110,6 +126,9 @@ const AddGearForm = () => {
 				label="Sector Spline"
 				variant="outlined"
 				value={sectorSpline}
+				InputProps={{
+					sx: { color: theme.palette.text.secondary },
+				}}
 				onChange={(e) => setSectorSpline(e.target.value)}
 				required
 			/>
@@ -119,6 +138,9 @@ const AddGearForm = () => {
 				label="Pitman Arm Direction"
 				variant="outlined"
 				value={direction}
+				InputProps={{
+					sx: { color: theme.palette.text.secondary },
+				}}
 				onChange={(e) => setDirection(e.target.value)}
 				required
 			/>

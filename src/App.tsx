@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import WelcomePage from "./components/WelcomePage";
 import ActiveNote from "./components/ActiveNote";
 import AddGearForm from "./components/AddGearForm";
+import AddNoteForm from "./components/AddNoteForm";
 
 const App = () => {
 	return (
@@ -21,6 +22,7 @@ const App = () => {
 						<Route path="/add-gear" element={<AddGearForm />} />
 						<Route path="/login" element={<LogInForm />} />
 						<Route path="/active-note" element={<ActiveNote />} />
+						<Route path="/add-note" element={<AddNoteForm />} />
 					</Routes>
 				</Navbar>
 			</>

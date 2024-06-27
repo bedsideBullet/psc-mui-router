@@ -32,17 +32,6 @@
       "sectorSpline": "4-36",
       "pitmanArmDirection": "Rear",
       "image": "https://www.pscmotorsports.com/media/catalog/product/cache/76f8089a7e73bdbcbc5a55caf73fceb6/d/s/dsc_0065-2_2.jpg"
-    },
-    {
-      "id": "9805",
-      "image": "src/assets/images/img_placeholder_2.jpg",
-      "partNumber": "asdf",
-      "ratio": "asd",
-      "rotation": "asf",
-      "sectorSpline": "asf",
-      "input": "asd",
-      "mountLocation": "asf",
-      "direction": "asf"
     }
   ],
   "notes": [

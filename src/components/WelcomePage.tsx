@@ -29,7 +29,7 @@ const WelcomePage = () => {
       
        {activeUser ? (
         <Stack spacing={2}>
-        <Button variant="contained" color="primary" >
+        <Button variant="contained" color="primary" onClick={() => navigate("/add-gear")} >
           + Add Gear
         </Button>
         <Button variant="contained" color="primary" >
