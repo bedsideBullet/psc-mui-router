@@ -1,37 +1,244 @@
 {
   "gearData": [
     {
-      "id": "1",
-      "input": "JK",
-      "partNumber": "SG688/R",
-      "rotation": "Reverse",
-      "mountLocation": "Inside Frame",
-      "ratio": "16.5:1",
-      "sectorSpline": "4-44",
-      "pitmanArmDirection": "Rear",
-      "image": "https://www.pscmotorsports.com/media/catalog/product/cache/76f8089a7e73bdbcbc5a55caf73fceb6/s/g/sg688r_img_5546_rs_800x600.jpg"
-    },
-    {
-      "id": "2",
-      "input": "DD",
-      "partNumber": "SG039/R",
-      "rotation": "Standard",
-      "mountLocation": "Inside Frame",
+      "id": "5707",
+      "image": "src/assets/images/img_placeholder_2.jpg",
+      "partNumber": "sg039/r",
       "ratio": "14:01",
+      "rotation": "Standard",
       "sectorSpline": "4-36",
-      "pitmanArmDirection": "Forward",
-      "image": "https://www.pscmotorsports.com/media/catalog/product/cache/76f8089a7e73bdbcbc5a55caf73fceb6/s/g/sg039r.jpg"
+      "input": "dd",
+      "turns": "3 1/4",
+      "tbar": "0.200",
+      "mountLocation": "inside frame"
     },
     {
-      "id": "3",
-      "input": "JK",
-      "partNumber": "SG062R",
-      "rotation": "Reverse",
-      "mountLocation": "Inside Frame",
+      "id": "e013",
+      "image": "src/assets/images/img_placeholder_2.jpg",
+      "partNumber": "sg682/r",
       "ratio": "16.5:1",
+      "rotation": "Reverse",
       "sectorSpline": "4-36",
-      "pitmanArmDirection": "Rear",
-      "image": "https://www.pscmotorsports.com/media/catalog/product/cache/76f8089a7e73bdbcbc5a55caf73fceb6/d/s/dsc_0065-2_2.jpg"
+      "input": "jk",
+      "turns": "3 3/8",
+      "tbar": "0.209",
+      "mountLocation": "Inside Frame"
+    },
+    {
+      "id": "3a7c",
+      "image": "src/assets/images/img_placeholder_2.jpg",
+      "partNumber": "sg684/r",
+      "ratio": "16.5:1",
+      "rotation": "Reverse",
+      "sectorSpline": "4-36",
+      "input": "jk",
+      "turns": "3 3/8",
+      "tbar": "0.209",
+      "mountLocation": "Inside frame"
+    },
+    {
+      "id": "aa7e",
+      "image": "src/assets/images/img_placeholder_2.jpg",
+      "partNumber": "sg688/r",
+      "ratio": "16.5:1",
+      "rotation": "reverse",
+      "sectorSpline": "4-44",
+      "input": "jk",
+      "turns": "3 3/8",
+      "tbar": "0.190",
+      "mountLocation": "inside frame"
+    },
+    {
+      "id": "75f7",
+      "image": "src/assets/images/img_placeholder_2.jpg",
+      "partNumber": "sg689/r",
+      "ratio": "16.5:1",
+      "rotation": "REVERSE",
+      "sectorSpline": "4-44",
+      "input": "JK",
+      "turns": "3 3/8",
+      "tbar": "0.190",
+      "mountLocation": "INSIDE FRAME"
+    },
+    {
+      "id": "3b15",
+      "image": "src/assets/images/img_placeholder_2.jpg",
+      "partNumber": "SG691/R",
+      "ratio": "16.5:1",
+      "rotation": "REVERSE",
+      "sectorSpline": "4-36",
+      "input": "JK",
+      "turns": "3 3/4",
+      "tbar": "0.190",
+      "mountLocation": "INSIDE FRAME"
+    },
+    {
+      "id": "2d2b",
+      "image": "src/assets/images/img_placeholder_2.jpg",
+      "partNumber": "SG693/R",
+      "ratio": "16.5:1",
+      "rotation": "REVERSE",
+      "sectorSpline": "4-36",
+      "input": "JK",
+      "turns": "3 3/4",
+      "tbar": "0.190",
+      "mountLocation": "INSIDE FRAME"
+    },
+    {
+      "id": "f5f7",
+      "image": "src/assets/images/img_placeholder_2.jpg",
+      "partNumber": "SG752/R",
+      "ratio": "17:01",
+      "rotation": "REVERSE",
+      "sectorSpline": "4-40",
+      "input": "3/4-36 SINGLE FLAT",
+      "turns": "4 1/4",
+      "tbar": "0.190",
+      "mountLocation": "INSIDE FRAME"
+    },
+    {
+      "id": "8f4e",
+      "image": "src/assets/images/img_placeholder_2.jpg",
+      "partNumber": "SG753/R",
+      "ratio": "17:01",
+      "rotation": "REVERSE",
+      "sectorSpline": "3-36 ",
+      "input": "3/4-36 SINGLE FLAT",
+      "turns": "4",
+      "tbar": "0.215",
+      "mountLocation": "INSIDE FRAME"
+    },
+    {
+      "id": "b37e",
+      "image": "src/assets/images/img_placeholder_2.jpg",
+      "partNumber": "SG754/R",
+      "ratio": "17:01",
+      "rotation": "REVERSE",
+      "sectorSpline": "3-36",
+      "input": "SMOOTH DOUBLE FLAT",
+      "turns": "4",
+      "tbar": "0.215",
+      "mountLocation": "INSIDE FRAME"
+    },
+    {
+      "id": "a7fb",
+      "image": "src/assets/images/img_placeholder_2.jpg",
+      "partNumber": "SG755/R",
+      "ratio": "17:01",
+      "rotation": "REVERSE",
+      "sectorSpline": "3-36",
+      "input": "SMOOTH DOUBLE FLAT",
+      "turns": "4",
+      "tbar": "0.190",
+      "mountLocation": "INSIDE FRAME"
+    },
+    {
+      "id": "8fa2",
+      "image": "src/assets/images/img_placeholder_2.jpg",
+      "partNumber": "SG840/R",
+      "ratio": "16.5:1",
+      "rotation": "STANDARD",
+      "sectorSpline": "4-36",
+      "input": "3/4-30 SINGLE FLAT",
+      "turns": "3 3/8",
+      "tbar": "0.206",
+      "mountLocation": "INSIDE FRAME"
+    },
+    {
+      "id": "e178",
+      "image": "src/assets/images/img_placeholder_2.jpg",
+      "partNumber": "SG851/R",
+      "ratio": "16.5:1",
+      "rotation": "STANDARD",
+      "sectorSpline": "4-36",
+      "input": "3/4 SINGLE FLAT",
+      "turns": "3 3/8",
+      "tbar": "0.206",
+      "mountLocation": "INSIDE FRAME"
+    },
+    {
+      "id": "4389",
+      "image": "src/assets/images/img_placeholder_2.jpg",
+      "partNumber": "SG853/R",
+      "ratio": "14:01",
+      "rotation": "STANDARD",
+      "sectorSpline": "4-40",
+      "input": "3/4-36 DOUBLE FLAT",
+      "turns": "3 3/8",
+      "tbar": "01.98",
+      "mountLocation": "INSIDE FRAME"
+    },
+    {
+      "id": "69d2",
+      "image": "src/assets/images/img_placeholder_2.jpg",
+      "partNumber": "SG856/R",
+      "ratio": "14:04",
+      "rotation": "STANDARD",
+      "sectorSpline": "4-44",
+      "input": "JK",
+      "turns": "3 3/8",
+      "tbar": "0.195",
+      "mountLocation": "INSIDE FRAME"
+    },
+    {
+      "id": "d7a2",
+      "image": "src/assets/images/img_placeholder_2.jpg",
+      "partNumber": "SG061/R",
+      "ratio": "14:01",
+      "rotation": "STANDARD",
+      "sectorSpline": "4-36",
+      "input": "3/4-30 SINGLE FLAT",
+      "turns": "3 1/4",
+      "tbar": "0.190",
+      "mountLocation": "INSIDE FRAME"
+    },
+    {
+      "id": "2225",
+      "image": "src/assets/images/img_placeholder_2.jpg",
+      "partNumber": "SG062/R",
+      "ratio": "14:01",
+      "rotation": "STANDART",
+      "sectorSpline": "4-36",
+      "input": "3/4-30 SINGLE FLAT",
+      "turns": "3 1/4",
+      "tbar": "0.190",
+      "mountLocation": "INSIDE FRAME"
+    },
+    {
+      "id": "13fb",
+      "image": "src/assets/images/img_placeholder_2.jpg",
+      "partNumber": "SG400R",
+      "ratio": "14:01",
+      "rotation": "STANDARD",
+      "sectorSpline": "4-36",
+      "input": "3/4-30 SINFLE FLAT",
+      "turns": "3 1/4",
+      "tbar": "0.190",
+      "mountLocation": "INSIDE FRAME"
+    },
+    {
+      "id": "5e14",
+      "image": "src/assets/images/img_placeholder_2.jpg",
+      "partNumber": "SGX041MR/SR",
+      "ratio": "14:01",
+      "rotation": "STANDARD",
+      "sectorSpline": "4-36",
+      "input": "3/4-30 SINGLE FLAT ",
+      "turns": "3 1/4",
+      "tbar": "0.190",
+      "mountLocation": "OUTSIDE FRAME"
+    },
+    {
+      "id": "cac4",
+      "image": "src/assets/images/img_placeholder_2.jpg",
+      "partNumber": "SGX042MR/SR",
+      "ratio": "14:01",
+      "rotation": "STANDARD",
+      "sectorSpline": "4-36",
+      "input": "13/16-36",
+      "turns": "3 1/4",
+      "tbar": "0.190",
+      "mountLocation": "OUTSIDE FRAME"
     }
   ],
   "notes": [
@@ -81,39 +288,28 @@
   "users": [
     {
       "id": "1",
-      "userName": "Daniel",
-      "password": "password",
-      "admin": true
+      "username": "Daniel",
+      "password": "password"
     },
     {
       "id": "2",
-      "userName": "Austin",
-      "password": "password",
-      "admin": false
+      "username": "Austin",
+      "password": "password"
     },
     {
       "id": "3",
-      "userName": "Kelvin",
-      "password": "password",
-      "admin": false
+      "username": "Kelvin",
+      "password": "password"
     },
     {
       "id": "4",
-      "userName": "Keegan",
-      "password": "password",
-      "admin": false
-    },
-    {
-      "id": "5",
-      "userName": "Riley",
-      "password": "password",
-      "admin": false
+      "username": "Keegan",
+      "password": "password"
     },
     {
       "id": "6",
-      "userName": "Felicia",
-      "password": "password",
-      "admin": true
+      "username": "Felicia",
+      "password": "password"
     }
   ]
 }

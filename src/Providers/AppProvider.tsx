@@ -7,17 +7,12 @@ export const AppContext = createContext<TAppContext>({} as TAppContext);
 
 export const AppProvider = ({ children }: { children: ReactNode }) => {
 	const [allGears, setAllGears] = useState<SteeringGear[]>([]);
-	const [activeUser, setActiveUser] = useState<User | null>(null);
 	const [users, setUsers] = useState<User[]>([]);
-	const [displayLoginForm, setDisplayLoginForm] = useState<boolean>(false);
-	const [displayCreateForm, setDisplayCreateForm] = useState<boolean>(false);
-	const [displayAddForm, setDisplayAddForm] = useState<boolean>(false);
-	const [displayNotesForm, setDisplayNotesForm] = useState<boolean>(false);
 	const [notes, setNotes] = useState<Note[]>([]);
+	const [activeUser, setActiveUser] = useState<User | null>(null);
 	const [activeNote, setActiveNote] = useState<Note | null>(null);
 	const [activeSteeringGear, setActiveSteeringGear] =
 		useState<SteeringGear | null>(null);
-
 
 	const fetchData = (): Promise<void> => {
 		return Requests.getAllGears().then((gears) => {
@@ -54,15 +49,14 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 		setActiveNote(note);
 	};
 
-	const logIn = (userName: string, password: string) => {
+	const logIn = (username: string, password: string) => {
 		const user = users.find(
-			(user) => user.userName === userName && user.password === password
+			(user) => user.username === username && user.password === password
 		);
 		if (user) {
 			setActiveUser(user);
 			localStorage.setItem("activeUser", JSON.stringify(user));
 			toast.success("Logged in successfully");
-			setDisplayLoginForm(false);
 		} else {
 			toast.error("Invalid username or password");
 		}
@@ -73,7 +67,6 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 		localStorage.setItem("activeUser", JSON.stringify(null));
 		toast.success("Logged out successfully");
 	};
-
 
 	const createGear = (gear: Omit<SteeringGear, "id">): Promise<void> => {
 		return Requests.postGear(gear)
@@ -86,7 +79,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 	const deleteGear = (id: number): Promise<void> => {
 		if (!id) {
 			toast.error("Failed to delete");
-			return Promise.resolve(); // Ensure a Promise<void> is always returned
+			return Promise.resolve();
 		}
 		return Requests.deleteGear(id)
 			.then(() => fetchData())
@@ -122,9 +115,30 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 				console.error(error);
 			});
 	};
-	  
-	  
-	  
+
+	const createUser = (user: Omit<User, "id">): Promise<void> => {
+		return Requests.postUser(user) // Assuming the backend assigns an id
+			.then(() => fetchUsers())
+			.then(() => {
+				toast.success("New User added");
+			});
+	};
+
+	const deleteUser = (id: number): Promise<void> => {
+		if (!id) {
+			toast.error("Failed to delete");
+			return Promise.resolve();
+		}
+		return Requests.deleteUser(id)
+			.then(() => fetchUsers())
+			.then(() => {
+				toast.success("Account deleted");
+			})
+			.catch((error) => {
+				toast.error("Failed to Account");
+				console.error(error);
+			});
+	};
 
 	const noteDisplay = (): string => {
 		if (activeUser && activeSteeringGear) {
@@ -137,13 +151,12 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 			);
 
 			if (matchingNote) {
-				return matchingNote.content;
+				return matchingNote.title;
 			}
 		}
 
 		return "Log in to see your notes on this part";
 	};
-
 
 	const contextValue = {
 		allGears,
@@ -153,27 +166,21 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 		users,
 		activeUser,
 		setActiveUser,
-		displayLoginForm,
-		setDisplayLoginForm,
 		activeSteeringGear,
 		setToActive,
-		displayAddForm,
-		setDisplayAddForm,
 		createGear,
 		logIn,
-		displayCreateForm,
-		setDisplayCreateForm,
 		noteDisplay,
 		notes,
-		displayNotesForm,
-		setDisplayNotesForm,
 		logOut,
 		setNoteActive,
 		activeNote,
 		setActiveNote,
 		deleteGear,
 		createNote,
-		deleteNote
+		deleteNote,
+		createUser,
+		deleteUser,
 	};
 
 	return (

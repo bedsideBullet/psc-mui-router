@@ -61,13 +61,13 @@ const postGear = (gear: Omit<SteeringGear, "id">): Promise<SteeringGear> => {
 };
 
 const deleteGear = (id: number): Promise<void> => {
-    return fetch(`${baseUrl}/gearData/${id}`, {
-        method: "DELETE",
-    }).then((response) => {
-        if (!response.ok) {
-            throw new Error("Failed to delete gear");
-        }
-    });
+	return fetch(`${baseUrl}/gearData/${id}`, {
+		method: "DELETE",
+	}).then((response) => {
+		if (!response.ok) {
+			throw new Error("Failed to delete gear");
+		}
+	});
 };
 
 const postNote = (note: Omit<Note, "id">): Promise<Note> => {
@@ -86,13 +86,33 @@ const postNote = (note: Omit<Note, "id">): Promise<Note> => {
 };
 
 const deleteNote = (id: number): Promise<void> => {
-    return fetch(`${baseUrl}/notes/${id}`, {
-        method: "DELETE",
-    }).then((response) => {
-        if (!response.ok) {
-            throw new Error("Failed to delete note");
-        }
-    });
+	return fetch(`${baseUrl}/notes/${id}`, {
+		method: "DELETE",
+	}).then((response) => {
+		if (!response.ok) {
+			throw new Error("Failed to delete note");
+		}
+	});
+};
+
+const postUser = (user: Omit<User, "id">): Promise<User> => {
+	return fetch(`${baseUrl}/users`, {
+		body: JSON.stringify(user),
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+	}).then((response) => response.json());
+};
+
+const deleteUser = (id: number): Promise<void> => {
+	return fetch(`${baseUrl}/users/${id}`, {
+		method: "DELETE",
+	}).then((response) => {
+		if (!response.ok) {
+			throw new Error("Failed to user gear");
+		}
+	});
 };
 
 export const Requests = {
@@ -102,5 +122,7 @@ export const Requests = {
 	postGear,
 	deleteGear,
 	postNote,
-	deleteNote
+	deleteNote,
+	postUser,
+	deleteUser,
 };

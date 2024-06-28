@@ -1,6 +1,13 @@
 import React, { useContext, useState } from "react";
 import { AppContext } from "../Providers/AppProvider";
-import { Box, Button, Stack, TextField, Typography, useTheme } from "@mui/material";
+import {
+	Box,
+	Button,
+	Stack,
+	TextField,
+	Typography,
+	useTheme,
+} from "@mui/material";
 import { useNavigate } from "react-router";
 import toast from "react-hot-toast";
 
@@ -10,8 +17,10 @@ const AddGearForm = () => {
 	const [rotation, setRotation] = useState<string>("");
 	const [sectorSpline, setSectorSpline] = useState<string>("");
 	const [input, setInput] = useState<string>("");
+	const [turns, setTurns] = useState<string>("");
+	const [tbar, setTbar] = useState<string>("");
 	const [mountLocation, setMountLocation] = useState<string>("");
-	const [direction, setDirection] = useState<string>("");
+	const [img, setImg] = useState<string>("");
 
 	const { createGear, activeUser } = useContext(AppContext);
 	const navigate = useNavigate();
@@ -25,23 +34,27 @@ const AddGearForm = () => {
 		setRotation("");
 		setSectorSpline("");
 		setInput("");
+		setTurns("");
+		setTbar("");
 		setMountLocation("");
-		setDirection("");
+		setImg(defaultImg);
 	};
 
 	const handleGearSubmit = (event: React.FormEvent) => {
 		event.preventDefault();
-		!activeUser ? toast.error("Log in to add a note") :
-		createGear({
-			image: defaultImg,
-			partNumber,
-			ratio,
-			rotation,
-			sectorSpline,
-			input,
-			mountLocation,
-			direction,
-		});
+		!activeUser
+			? toast.error("Log in to add a note")
+			: createGear({
+					image: defaultImg,
+					partNumber,
+					ratio,
+					rotation,
+					sectorSpline,
+					input,
+					turns,
+					tbar,
+					mountLocation,
+			  });
 		reset();
 	};
 
@@ -58,7 +71,7 @@ const AddGearForm = () => {
 	};
 
 	return (
-		<Box sx={style} component="form" onSubmit={handleGearSubmit}>
+		<Box sx={style} component="form" onSubmit={handleGearSubmit} mt={5}>
 			<Typography id="add-gear-modal-title" variant="h6" component="h2">
 				+ Add New Gear
 			</Typography>
@@ -72,18 +85,6 @@ const AddGearForm = () => {
 					sx: { color: theme.palette.text.secondary },
 				}}
 				onChange={(e) => setPartNumber(e.target.value)}
-				required
-			/>
-			<TextField
-				margin="normal"
-				fullWidth
-				label="Input"
-				variant="outlined"
-				value={input}
-				InputProps={{
-					sx: { color: theme.palette.text.secondary },
-				}}
-				onChange={(e) => setInput(e.target.value)}
 				required
 			/>
 			<TextField
@@ -113,18 +114,6 @@ const AddGearForm = () => {
 			<TextField
 				margin="normal"
 				fullWidth
-				label="Mount Location"
-				variant="outlined"
-				value={mountLocation}
-				InputProps={{
-					sx: { color: theme.palette.text.secondary },
-				}}
-				onChange={(e) => setMountLocation(e.target.value)}
-				required
-			/>
-			<TextField
-				margin="normal"
-				fullWidth
 				label="Sector Spline"
 				variant="outlined"
 				value={sectorSpline}
@@ -137,15 +126,52 @@ const AddGearForm = () => {
 			<TextField
 				margin="normal"
 				fullWidth
-				label="Pitman Arm Direction"
+				label="Input"
 				variant="outlined"
-				value={direction}
+				value={input}
 				InputProps={{
 					sx: { color: theme.palette.text.secondary },
 				}}
-				onChange={(e) => setDirection(e.target.value)}
+				onChange={(e) => setInput(e.target.value)}
 				required
 			/>
+			<TextField
+				margin="normal"
+				fullWidth
+				label="Turns lock-to-lock"
+				variant="outlined"
+				value={turns}
+				InputProps={{
+					sx: { color: theme.palette.text.secondary },
+				}}
+				onChange={(e) => setTurns(e.target.value)}
+				required
+			/>
+			<TextField
+				margin="normal"
+				fullWidth
+				label="T-Bar"
+				variant="outlined"
+				value={tbar}
+				InputProps={{
+					sx: { color: theme.palette.text.secondary },
+				}}
+				onChange={(e) => setTbar(e.target.value)}
+				required
+			/>
+			<TextField
+				margin="normal"
+				fullWidth
+				label="Mount Location"
+				variant="outlined"
+				value={mountLocation}
+				InputProps={{
+					sx: { color: theme.palette.text.secondary },
+				}}
+				onChange={(e) => setMountLocation(e.target.value)}
+				required
+			/>
+
 			<Stack spacing={1}>
 				<Button type="submit" variant="contained" color="primary">
 					+

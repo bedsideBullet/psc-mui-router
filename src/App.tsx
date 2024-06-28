@@ -8,6 +8,8 @@ import WelcomePage from "./components/WelcomePage";
 import ActiveNote from "./components/ActiveNote";
 import AddGearForm from "./components/AddGearForm";
 import AddNoteForm from "./components/AddNoteForm";
+import { AddUserForm } from "./components/AddUserForm";
+import { DeleteAlert } from "./components/DeleteAlert";
 
 const App = () => {
 	return (
@@ -23,6 +25,8 @@ const App = () => {
 						<Route path="/login" element={<LogInForm />} />
 						<Route path="/active-note" element={<ActiveNote />} />
 						<Route path="/add-note" element={<AddNoteForm />} />
+						<Route path="/add-user" element={<AddUserForm />} />
+						<Route path="/delete-account" element={<DeleteAlert />} />
 					</Routes>
 				</Navbar>
 			</>

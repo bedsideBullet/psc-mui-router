@@ -12,11 +12,14 @@ import {
 	ListItemText,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+import { useNavigate } from "react-router";
 
 export const ActiveGear: React.FC = () => {
-	const { activeSteeringGear, noteDisplay, setDisplayNotesForm } =
+	const { activeSteeringGear, noteDisplay, notes, setActiveNote, activeUser } =
 		useContext(AppContext);
 	const theme = useTheme();
+	const navigate = useNavigate();
+
 	const copyStateToClipboard = (state: SteeringGear) => {
 		const stateString = JSON.stringify(state, null, 2);
 		navigator.clipboard
@@ -27,6 +30,21 @@ export const ActiveGear: React.FC = () => {
 			.catch((err) => {
 				toast.error("Could not copy text: " + err);
 			});
+	};
+
+	const gearNote = notes.find(
+		(note) => String(note.id) === String(activeSteeringGear?.id)
+	);
+
+	const handleButtonClick = () => {
+		if (!activeUser) {
+			navigate("/login");
+			return;
+		}
+		if (gearNote) {
+			setActiveNote(gearNote);
+			navigate("/active-note");
+		}
 	};
 
 	return (
@@ -63,7 +81,7 @@ export const ActiveGear: React.FC = () => {
 						<Button
 							variant="contained"
 							color="primary"
-							onClick={() => setDisplayNotesForm(true)}
+							onClick={handleButtonClick}
 							size="large"
 						>
 							{noteDisplay()}
@@ -77,11 +95,11 @@ export const ActiveGear: React.FC = () => {
 					<Box
 						className="info-wrapper"
 						mt={2}
-						sx={{ backgroundColor: theme.palette.text.secondary, padding: 2 }}
+						sx={{ backgroundColor: theme.palette.secondary.dark, padding: 2 }}
 					>
 						<List>
 							<ListItem>
-								<ListItemText primary={`Input: ${activeSteeringGear?.input}`} />
+								<ListItemText primary={`Ratio: ${activeSteeringGear?.ratio}`} />
 							</ListItem>
 							<ListItem>
 								<ListItemText
@@ -90,20 +108,23 @@ export const ActiveGear: React.FC = () => {
 							</ListItem>
 							<ListItem>
 								<ListItemText
-									primary={`Mount Location: ${activeSteeringGear?.mountLocation}`}
-								/>
-							</ListItem>
-							<ListItem>
-								<ListItemText
-									primary={`Pitman Arm Direction: ${activeSteeringGear?.direction}`}
-								/>
-							</ListItem>
-							<ListItem>
-								<ListItemText primary={`Ratio: ${activeSteeringGear?.ratio}`} />
-							</ListItem>
-							<ListItem>
-								<ListItemText
 									primary={`Sector Spline: ${activeSteeringGear?.sectorSpline}`}
+								/>
+							</ListItem>
+							<ListItem>
+								<ListItemText primary={`Input: ${activeSteeringGear?.input}`} />
+							</ListItem>
+							<ListItem>
+								<ListItemText
+									primary={`Turns lock-to-lock: ${activeSteeringGear?.turns}`}
+								/>
+							</ListItem>
+							<ListItem>
+								<ListItemText primary={`T-Bar: ${activeSteeringGear?.tbar}`} />
+							</ListItem>
+							<ListItem>
+								<ListItemText
+									primary={`Mount Location: ${activeSteeringGear?.mountLocation}`}
 								/>
 							</ListItem>
 						</List>
