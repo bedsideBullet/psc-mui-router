@@ -32,7 +32,7 @@ const WelcomePage = () => {
         <Button variant="contained" color="primary" onClick={() => navigate("/add-gear")} >
           + Add Gear
         </Button>
-        <Button variant="contained" color="primary" >
+        <Button variant="contained" color="primary" onClick={() => navigate("/add-note")}>
           + Add Note
         </Button>
         <Button variant="contained" color="secondary" onClick={logOut}>

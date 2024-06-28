@@ -34,6 +34,7 @@ const Navbar = ({ children }: NavbarProps) => {
     notes,
     setNoteActive,
     deleteGear,
+    deleteNote
   } = useContext(AppContext);
   const theme = useTheme();
   const navigate = useNavigate();
@@ -178,7 +179,9 @@ const Navbar = ({ children }: NavbarProps) => {
           ) : (
             <List>
               <ListItem>
-                <ListItemButton sx={{ bgcolor: theme.palette.secondary.main }}>
+                <ListItemButton 
+                onClick={() => activeUser ? navigate("/add-note") : navigate("/login")}
+                sx={{ bgcolor: theme.palette.secondary.main }}>
                   <ListItemText>+ Add New Note</ListItemText>
                 </ListItemButton>
               </ListItem>
@@ -211,7 +214,12 @@ const Navbar = ({ children }: NavbarProps) => {
                         }}
                       />
                       <Button
-                        onClick={() => alert("Delete")}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          !activeUser || !note.id
+                            ? navigate("/login")
+                            : deleteNote(note.id);
+                        }}
                         sx={{
                           color: theme.palette.primary.dark,
                           pl: 5,

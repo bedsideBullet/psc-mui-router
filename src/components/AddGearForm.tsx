@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { AppContext } from "../Providers/AppProvider";
 import { Box, Button, Stack, TextField, Typography, useTheme } from "@mui/material";
 import { useNavigate } from "react-router";
+import toast from "react-hot-toast";
 
 const AddGearForm = () => {
 	const [partNumber, setPartNumber] = useState<string>("");
@@ -12,7 +13,7 @@ const AddGearForm = () => {
 	const [mountLocation, setMountLocation] = useState<string>("");
 	const [direction, setDirection] = useState<string>("");
 
-	const { createGear } = useContext(AppContext);
+	const { createGear, activeUser } = useContext(AppContext);
 	const navigate = useNavigate();
 	const theme = useTheme();
 
@@ -30,6 +31,7 @@ const AddGearForm = () => {
 
 	const handleGearSubmit = (event: React.FormEvent) => {
 		event.preventDefault();
+		!activeUser ? toast.error("Log in to add a note") :
 		createGear({
 			image: defaultImg,
 			partNumber,

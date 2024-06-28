@@ -6,13 +6,22 @@ import Typography from "@mui/material/Typography";
 import { AppContext } from "../Providers/AppProvider";
 import { useContext } from "react";
 import { Stack } from "@mui/material";
+import { useNavigate } from "react-router";
 
 const ActiveNote = () => {
-	const { activeNote, allGears } = useContext(AppContext);
+	const { activeNote, allGears, setToActive } = useContext(AppContext);
+	const navigate = useNavigate()
 
-	const noteGear = allGears.filter(
+	const noteGear = allGears.find(
 		(gear) => String(gear.id) === String(activeNote?.gearId)
 	);
+
+	const handleButtonClick = () => {
+		if (noteGear) {
+		  setToActive(noteGear);
+		  navigate("/active-gear");
+		}
+	  };
 
 	return (
 		<Card sx={{ minWidth: 275 }}>
@@ -29,8 +38,8 @@ const ActiveNote = () => {
 					<Typography variant="subtitle1" color="text.secondary">
 						Part:
 					</Typography>
-					<Button size="small" onClick={() => console.log(noteGear)}>
-						{noteGear.length > 0 ? noteGear[0].partNumber : "No matching gear"}
+					<Button size="small" onClick={handleButtonClick}>
+						{noteGear ? noteGear.partNumber : "No related part" }
 					</Button>
 				</Stack>
 			</CardActions>

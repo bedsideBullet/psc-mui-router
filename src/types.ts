@@ -13,7 +13,7 @@ export type SteeringGear = {
 };
 
 export type Note = {
-  id: number;
+  id?: number;
   title: string;
   userId: number;
   gearId: number;
@@ -51,4 +51,5 @@ export type TAppContext = {
   setActiveNote: (note: Note) => void;
   deleteGear: (id: number) => Promise<void>;
   createNote: (note: Note) => void;
+  deleteNote: (id: number) => void;
 };

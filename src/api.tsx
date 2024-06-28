@@ -85,11 +85,22 @@ const postNote = (note: Omit<Note, "id">): Promise<Note> => {
 	});
 };
 
+const deleteNote = (id: number): Promise<void> => {
+    return fetch(`${baseUrl}/notes/${id}`, {
+        method: "DELETE",
+    }).then((response) => {
+        if (!response.ok) {
+            throw new Error("Failed to delete note");
+        }
+    });
+};
+
 export const Requests = {
 	getAllGears,
 	getAllUsers,
 	getAllNotes,
 	postGear,
 	deleteGear,
-	postNote
+	postNote,
+	deleteNote
 };

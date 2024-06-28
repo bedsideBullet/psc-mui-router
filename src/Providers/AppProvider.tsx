@@ -101,15 +101,30 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 
 	const createNote = (note: Omit<Note, "id">): Promise<void> => {
 		return Requests.postNote(note)
-			.then((newNote) => {
-				setNotes((prevNotes) => [...prevNotes, newNote]);
-				toast.success("Note added successfully");
+			.then(() => fetchNotes())
+			.then(() => {
+				toast.success("New Note added");
+			});
+	};
+
+	const deleteNote = (id: number): Promise<void> => {
+		if (!id) {
+			toast.error("Failed to delete");
+			return Promise.resolve();
+		}
+		return Requests.deleteNote(id)
+			.then(() => fetchNotes())
+			.then(() => {
+				toast.success("Note deleted");
 			})
 			.catch((error) => {
-				toast.error("Failed to add note");
+				toast.error("Failed to delete");
 				console.error(error);
 			});
 	};
+	  
+	  
+	  
 
 	const noteDisplay = (): string => {
 		if (activeUser && activeSteeringGear) {
@@ -128,6 +143,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 
 		return "Log in to see your notes on this part";
 	};
+
 
 	const contextValue = {
 		allGears,
@@ -156,7 +172,8 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 		activeNote,
 		setActiveNote,
 		deleteGear,
-		createNote
+		createNote,
+		deleteNote
 	};
 
 	return (
