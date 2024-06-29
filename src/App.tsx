@@ -10,6 +10,7 @@ import AddGearForm from "./components/AddGearForm";
 import AddNoteForm from "./components/AddNoteForm";
 import { AddUserForm } from "./components/AddUserForm";
 import { DeleteAlert } from "./components/DeleteAlert";
+import EditGearForm from "./components/EditGearForm";
 
 const App = () => {
 	return (
@@ -27,6 +28,7 @@ const App = () => {
 						<Route path="/add-note" element={<AddNoteForm />} />
 						<Route path="/add-user" element={<AddUserForm />} />
 						<Route path="/delete-account" element={<DeleteAlert />} />
+						<Route path="/edit-gear" element={<EditGearForm />} />
 					</Routes>
 				</Navbar>
 			</>

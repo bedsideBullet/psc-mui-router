@@ -38,7 +38,8 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 		const storedUser = localStorage.getItem("activeUser");
 		if (storedUser) {
 			setActiveUser(JSON.parse(storedUser));
-		}
+		};
+		alert("hey I kinda hit a hard spot here. if you remember, my work schedule keeps me from most of the live classes. I was hoping you could review my progress so far and give me any tips!!! you can login with the username `devslopes` and the password `password`")
 	}, []);
 
 	const setToActive = (gear: SteeringGear) => {
@@ -75,6 +76,20 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 				toast.success("New Steering Gear added");
 			});
 	};
+
+	const editGear = (updatedGear: SteeringGear): Promise<void> => {
+		const { id, ...gearData } = updatedGear;
+		return Requests.updateGear(updatedGear)
+		  .then(() => fetchData())
+		  .then(() => {
+			toast.success("Steering Gear updated");
+		  })
+		  .catch((error) => {
+			toast.error("Failed to update Steering Gear");
+			console.error(error);
+		  });
+	  };
+	
 
 	const deleteGear = (id: number): Promise<void> => {
 		if (!id) {
@@ -181,6 +196,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 		deleteNote,
 		createUser,
 		deleteUser,
+		editGear
 	};
 
 	return (

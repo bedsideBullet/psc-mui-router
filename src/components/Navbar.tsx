@@ -5,7 +5,6 @@ import AppBar from "@mui/material/AppBar";
 import CssBaseline from "@mui/material/CssBaseline";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
-import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -24,7 +23,7 @@ interface NavbarProps {
 	children: ReactNode;
 }
 
-const drawerWidth = 350;
+const drawerWidth = 400;
 
 const Navbar = ({ children }: NavbarProps) => {
 	const {
@@ -48,14 +47,12 @@ const Navbar = ({ children }: NavbarProps) => {
 					<IconButton onClick={() => navigate("/welcome")}>
 						<HomeIcon />
 					</IconButton>
-					<Typography
-						variant="h6"
-						noWrap
+					<Box
 						component="div"
-						sx={{ textAlign: "center", width: "100%" }}
+						sx={{ textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center", height: "64px", flexGrow: 1 }}
 					>
-						PSC Motorsports
-					</Typography>
+						<img src="src/assets/images/PSC_logo.png" alt="PSC Motorsports" style={{ maxHeight: "85%", maxWidth: "100%" }} />
+					</Box>
 					{!activeUser ? (
 						<Button
 							variant="contained"

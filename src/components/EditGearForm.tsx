@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { ChangeEvent, useContext, useState } from "react";
 import { AppContext } from "../Providers/AppProvider";
 import {
   Box,
@@ -12,7 +12,9 @@ import {
 import { useNavigate } from "react-router";
 import toast from "react-hot-toast";
 
-const AddGearForm = () => {
+interface EditGearFormProps {}
+
+const EditGearForm: React.FC<EditGearFormProps> = () => {
   const [partNumber, setPartNumber] = useState<string>("");
   const [ratio, setRatio] = useState<string>("");
   const [rotation, setRotation] = useState<string>("");
@@ -23,7 +25,7 @@ const AddGearForm = () => {
   const [mountLocation, setMountLocation] = useState<string>("");
   const [img, setImg] = useState<string>("");
 
-  const { createGear, activeUser } = useContext(AppContext);
+  const { activeUser } = useContext(AppContext);
   const navigate = useNavigate();
   const theme = useTheme();
 
@@ -43,23 +45,15 @@ const AddGearForm = () => {
 
   const handleGearSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    !activeUser
-      ? toast.error("Log in to add a note")
-      : createGear({
-          image: img, 
-          partNumber,
-          ratio,
-          rotation,
-          sectorSpline,
-          input,
-          turns,
-          tbar,
-          mountLocation,
-        });
+    if (!activeUser) {
+      toast.error("Log in to edit gear");
+      return;
+    }
+
     reset();
   };
 
-  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageUpload = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
       const reader = new FileReader();
@@ -75,7 +69,7 @@ const AddGearForm = () => {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: 800, // Adjusted width for two columns
+    width: 800,
     bgcolor: "background.paper",
     color: "text.secondary",
     boxShadow: 24,
@@ -84,8 +78,8 @@ const AddGearForm = () => {
 
   return (
     <Box sx={style} component="form" onSubmit={handleGearSubmit} mt={5}>
-      <Typography id="add-gear-modal-title" variant="h6" component="h2">
-        + Add New Gear
+      <Typography id="edit-gear-modal-title" variant="h6" component="h2">
+        Edit Gear
       </Typography>
       <Grid container spacing={2}>
         <Grid item xs={6}>
@@ -191,26 +185,28 @@ const AddGearForm = () => {
       </Grid>
 
       <Stack spacing={1} mt={2}>
-		<label htmlFor="input">Choose an image</label>
+        <label htmlFor="edit-input">Choose an image</label>
         <input
           type="file"
+          value={img}
           accept="image/*"
+          id="edit-input"
           onChange={handleImageUpload}
-          style={{ marginTop: theme.spacing(2), marginLeft: 280 }}
+          style={{ marginTop: theme.spacing(2) }}
         />
         <Button type="submit" variant="contained" color="primary">
-          +Add Gear
+          Save Changes
         </Button>
         <Button
           variant="contained"
           color="secondary"
           onClick={() => navigate(-1)}
         >
-          Go Back
+          Cancel
         </Button>
       </Stack>
     </Box>
   );
 };
 
-export default AddGearForm;
+export default EditGearForm;

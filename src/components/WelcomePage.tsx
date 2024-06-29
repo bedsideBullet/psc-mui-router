@@ -14,8 +14,8 @@ const WelcomePage = () => {
 		<Box
 			sx={{
 				padding: theme.spacing(4),
-				backgroundColor: theme.palette.background.default,
-				color: theme.palette.text.primary,
+				backgroundColor: theme.palette.background.paper,
+				color: theme.palette.text.secondary,
 			}}
 		>
 			<Typography component="h1" variant="h1" gutterBottom>

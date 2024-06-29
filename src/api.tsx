@@ -18,6 +18,17 @@ const getAllGears = (): Promise<SteeringGear[]> => {
 		});
 };
 
+const updateGear = (gear: SteeringGear): Promise<SteeringGear> => {
+	const { id, ...gearData } = gear;
+	return fetch(`${baseUrl}/gearData/${id}`, {
+	  body: JSON.stringify(gearData),
+	  method: "PUT",
+	  headers: {
+		"Content-Type": "application/json",
+	  },
+	}).then((response) => response.json());
+  };
+
 const getAllUsers = (): Promise<User[]> => {
 	return fetch(`${baseUrl}/users`)
 		.then((response) => {
@@ -125,4 +136,5 @@ export const Requests = {
 	deleteNote,
 	postUser,
 	deleteUser,
+	updateGear
 };
