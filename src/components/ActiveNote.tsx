@@ -26,7 +26,8 @@ const ActiveNote = () => {
 	return (
 		<Card
 			sx={{
-				minWidth: 750,
+				maxWidth: 750,
+				minWidth: 400,
 				minHeight: 400,
 				display: "flex",
 				flexDirection: "column",
