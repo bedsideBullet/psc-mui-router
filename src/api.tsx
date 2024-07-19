@@ -19,15 +19,18 @@ const getAllGears = (): Promise<SteeringGear[]> => {
 };
 
 const updateGear = (gear: SteeringGear): Promise<SteeringGear> => {
+	if (!gear || !gear.id) {
+		return Promise.reject(new Error("Invalid Gear data"));
+	}
 	const { id, ...gearData } = gear;
 	return fetch(`${baseUrl}/gearData/${id}`, {
-	  body: JSON.stringify(gearData),
-	  method: "PUT",
-	  headers: {
-		"Content-Type": "application/json",
-	  },
+		body: JSON.stringify(gearData),
+		method: "PUT",
+		headers: {
+			"Content-Type": "application/json",
+		},
 	}).then((response) => response.json());
-  };
+};
 
 const getAllUsers = (): Promise<User[]> => {
 	return fetch(`${baseUrl}/users`)
@@ -136,5 +139,5 @@ export const Requests = {
 	deleteNote,
 	postUser,
 	deleteUser,
-	updateGear
+	updateGear,
 };

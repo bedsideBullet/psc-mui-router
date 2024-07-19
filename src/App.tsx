@@ -28,7 +28,7 @@ const App = () => {
 						<Route path="/add-note" element={<AddNoteForm />} />
 						<Route path="/add-user" element={<AddUserForm />} />
 						<Route path="/delete-account" element={<DeleteAlert />} />
-						<Route path="/edit-gear" element={<EditGearForm />} />
+						<Route path="/edit-gear/:id" element={<EditGearForm />} />
 					</Routes>
 				</Navbar>
 			</>
