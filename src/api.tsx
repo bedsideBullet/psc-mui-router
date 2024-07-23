@@ -25,7 +25,7 @@ const updateGear = (gear: SteeringGear): Promise<SteeringGear> => {
 	const { id, ...gearData } = gear;
 	return fetch(`${baseUrl}/gearData/${id}`, {
 		body: JSON.stringify(gearData),
-		method: "PUT",
+		method: "PATCH",
 		headers: {
 			"Content-Type": "application/json",
 		},

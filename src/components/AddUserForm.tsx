@@ -27,7 +27,8 @@ export const AddUserForm = () => {
 			username,
 			password,
 		});
-	};
+		navigate("/login")
+	}; 
 
 	return (
 		<Container component="main" maxWidth="xs" sx={{ mb: 7 }}>

@@ -155,20 +155,20 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 
 	const noteDisplay = (): string => {
 		if (activeUser && activeSteeringGear) {
-			const userId = Number(activeUser.id);
-			const gearId = Number(activeSteeringGear.id);
+			const userId = activeUser.id;
+			const gearId = activeSteeringGear.id;
 
 			const matchingNote = notes.find(
 				(note) =>
-					Number(note.userId) === userId && Number(note.gearId) === gearId
+					note.userId === userId && note.gearId === gearId
 			);
 
-			if (matchingNote) {
+		if (matchingNote) {
 				return matchingNote.title;
-			}
+			} 
+			else return  "No Notes on this part"
 		}
-
-		return "Log in to see your notes on this part";
+		else return "Log in to see your notes on this part";
 	};
 
 	const contextValue = {
