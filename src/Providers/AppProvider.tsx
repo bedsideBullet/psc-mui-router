@@ -153,22 +153,19 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 			});
 	};
 
-	const noteDisplay = (): string => {
+	const noteDisplay = () => {
 		if (activeUser && activeSteeringGear) {
-			const userId = activeUser.id;
-			const gearId = activeSteeringGear.id;
+			const userId = Number(activeUser.id);
+			const gearId = Number(activeSteeringGear.id);
 
 			const matchingNote = notes.find(
 				(note) =>
-					note.userId === userId && note.gearId === gearId
+					Number(note.userId) === userId && Number(note.gearId) === gearId
 			);
-
-		if (matchingNote) {
+			if (matchingNote) {
 				return matchingNote.title;
-			} 
-			else return  "No Notes on this part"
-		}
-		else return "Log in to see your notes on this part";
+			} else return "Click to add notes";
+		} else return "Log in to see your notes on this part";
 	};
 
 	const contextValue = {

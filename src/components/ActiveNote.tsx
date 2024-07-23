@@ -5,7 +5,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { AppContext } from "../Providers/AppProvider";
 import { useContext } from "react";
-import { Box, Stack } from "@mui/material";
+import { Box, Container, Stack } from "@mui/material";
 import { useNavigate } from "react-router";
 
 const ActiveNote = () => {
@@ -24,49 +24,58 @@ const ActiveNote = () => {
 	};
 
 	return (
-		<Card
+		<Container
 			sx={{
-				maxWidth: 750,
-				minWidth: 400,
-				minHeight: 400,
+				height: "100%",
 				display: "flex",
 				flexDirection: "column",
-				justifyContent: "space-between",
+				justifyContent: "center",
 			}}
 		>
-			<CardContent>
-				<Typography
-					variant="h3"
-					component="div"
-					color="text.secondary"
-					gutterBottom
-				>
-					{activeNote?.title}
-				</Typography>
-				<Box
-					sx={{
-						display: "flex",
-						justifyContent: "center",
-						alignItems: "center",
-						minHeight: 200,
-					}}
-				>
-					<Typography variant="h6" color="text.secondary">
-						{activeNote?.content}
+			<Card
+				sx={{
+					maxWidth: 750,
+					minWidth: 400,
+					minHeight: 400,
+					display: "flex",
+					flexDirection: "column",
+					justifyContent: "space-between",
+				}}
+			>
+				<CardContent>
+					<Typography
+						variant="h3"
+						component="div"
+						color="text.secondary"
+						gutterBottom
+					>
+						{activeNote?.title}
 					</Typography>
-				</Box>
-			</CardContent>
-			<CardActions>
-				<Stack direction="row" spacing={1} alignItems="center">
-					<Typography variant="subtitle1" color="text.secondary">
-						Part:
-					</Typography>
-					<Button size="small" onClick={handleButtonClick}>
-						{noteGear ? noteGear.partNumber : "No related part"}
-					</Button>
-				</Stack>
-			</CardActions>
-		</Card>
+					<Box
+						sx={{
+							display: "flex",
+							justifyContent: "center",
+							alignItems: "center",
+							minHeight: 200,
+						}}
+					>
+						<Typography variant="h6" color="text.secondary">
+							{activeNote?.content}
+						</Typography>
+					</Box>
+				</CardContent>
+				<CardActions>
+					<Stack direction="row" spacing={1} alignItems="center">
+						<Typography variant="subtitle1" color="text.secondary">
+							Part:
+						</Typography>
+						<Button size="small" onClick={handleButtonClick}>
+							{noteGear ? noteGear.partNumber : "No related part"}
+						</Button>
+					</Stack>
+				</CardActions>
+			</Card>
+		</Container>
 	);
 };
 
