@@ -10,8 +10,7 @@ import {
 	useTheme,
 } from "@mui/material";
 import { useNavigate } from "react-router";
-import toast from "react-hot-toast";
-import ActiveGear from "./ActiveGear";
+import { SteeringGear } from "../types";
 
 interface EditGearFormProps {}
 
@@ -26,11 +25,13 @@ const EditGearForm: React.FC<EditGearFormProps> = () => {
 	const [mountLocation, setMountLocation] = useState<string>("");
 	const [img, setImg] = useState<string>("");
 
-	const { activeUser, activeSteeringGear, editGear } = useContext(AppContext);
+	const { activeSteeringGear, updateGear} = useContext(AppContext);
 	const navigate = useNavigate();
 	const theme = useTheme();
 
 	const defaultImg = "src/assets/images/img_placeholder_2.jpg";
+
+	setImg(defaultImg)
 
 	const reset = () => {
 		setPartNumber("");
@@ -46,13 +47,28 @@ const EditGearForm: React.FC<EditGearFormProps> = () => {
 
 	const handleGearSubmit = (event: React.FormEvent) => {
 		event.preventDefault();
-		if (!activeUser) {
-			toast.error("Log in to edit gear");
-			return;
-		}
-		editGear();
-		reset();
-	};
+	  
+		if (!activeSteeringGear) return;
+	  
+		const updatedGear: SteeringGear = {
+		  ...activeSteeringGear,
+		  partNumber,
+		  ratio,
+		  rotation,
+		  sectorSpline,
+		  input,
+		  turns,
+		  tbar,
+		  mountLocation,
+		  image: img,
+		};
+	  
+		updateGear(updatedGear).then(() => {
+		  reset();
+		  navigate("/"); // Redirect after successful update
+		});
+	  };
+	  
 
 	const handleImageUpload = (event: ChangeEvent<HTMLInputElement>) => {
 		const file = event.target.files?.[0];
@@ -66,15 +82,12 @@ const EditGearForm: React.FC<EditGearFormProps> = () => {
 	};
 
 	const style = {
-		position: "absolute" as "absolute",
-		top: "50%",
-		left: "50%",
-		transform: "translate(-50%, -50%)",
 		width: 800,
 		bgcolor: "background.paper",
 		color: "text.secondary",
 		boxShadow: 24,
 		p: 4,
+		mt: 0
 	};
 
 	return (
