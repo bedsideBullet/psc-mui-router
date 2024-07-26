@@ -18,6 +18,7 @@ const getAllGears = (): Promise<SteeringGear[]> => {
 		});
 };
 
+<<<<<<< HEAD
 const updateGear = (
 	gear: Partial<SteeringGear> & { id: number }
 ): Promise<SteeringGear> => {
@@ -38,6 +39,23 @@ const updateGear = (
 		return response.json();
 	});
 };
+=======
+const updateGear = (gear: SteeringGear): Promise<SteeringGear> => {
+	return fetch(`${baseUrl}/gearData/${gear.id}`, {
+	  body: JSON.stringify(gear),
+	  method: "PUT",
+	  headers: {
+		"Content-Type": "application/json",
+	  },
+	}).then((response) => {
+	  if (!response.ok) {
+		throw new Error("Failed to update gear");
+	  }
+	  return response.json();
+	});
+  };
+  
+>>>>>>> 388693ce5503ecf1819508077da8f3dad34581ac
 
 const getAllUsers = (): Promise<User[]> => {
 	return fetch(`${baseUrl}/users`)

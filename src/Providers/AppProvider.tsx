@@ -76,6 +76,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 			});
 	};
 
+<<<<<<< HEAD
 	const editGear = (
 		gear: Partial<SteeringGear> & { id: number }
 	): Promise<void> => {
@@ -89,6 +90,24 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 				console.error(error);
 			});
 	};
+=======
+	const updateGear = (updatedGear: SteeringGear): Promise<void> => {
+		if (!updatedGear.id) {
+		  return Promise.reject(new Error("Gear ID is required to update"));
+		}
+	  
+		return Requests.updateGear(updatedGear)
+		  .then(() => fetchData())
+		  .then(() => {
+			toast.success("Steering Gear updated successfully");
+		  })
+		  .catch((error) => {
+			toast.error("Failed to update gear");
+			console.error(error);
+		  });
+	  };
+	  
+>>>>>>> 388693ce5503ecf1819508077da8f3dad34581ac
 
 	const deleteGear = (id: number): Promise<void> => {
 		if (!id) {
@@ -192,7 +211,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 		deleteNote,
 		createUser,
 		deleteUser,
-		editGear,
+		updateGear,
 	};
 
 	return (
