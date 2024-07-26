@@ -40,7 +40,7 @@ const AddNoteForm = () => {
 				title,
 				content,
 				gearId,
-				userId: activeUser.id,
+				userId: Number(activeUser.id),
 			});
 			reset();
 		}

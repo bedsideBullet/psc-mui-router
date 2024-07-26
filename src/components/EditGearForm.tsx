@@ -11,7 +11,6 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router";
 import toast from "react-hot-toast";
-import ActiveGear from "./ActiveGear";
 import { SteeringGear } from "../types";
 
 interface EditGearFormProps {}
@@ -33,7 +32,7 @@ const EditGearForm: React.FC<EditGearFormProps> = () => {
 
 	const defaultImg = "src/assets/images/img_placeholder_2.jpg";
 
-	setImg(defaultImg);
+	setImage(defaultImg);
 
 	const reset = () => {
 		setPartNumber("");
