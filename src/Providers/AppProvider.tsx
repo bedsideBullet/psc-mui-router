@@ -76,9 +76,10 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 			});
 	};
 
-	const editGear = (updatedGear: SteeringGear): Promise<void> => {
-		const { id, ...gearData } = updatedGear;
-		return Requests.updateGear(updatedGear)
+	const editGear = (
+		gear: Partial<SteeringGear> & { id: number }
+	): Promise<void> => {
+		return Requests.updateGear(gear)
 			.then(() => fetchData())
 			.then(() => {
 				toast.success("Steering Gear updated");

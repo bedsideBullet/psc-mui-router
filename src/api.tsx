@@ -18,18 +18,25 @@ const getAllGears = (): Promise<SteeringGear[]> => {
 		});
 };
 
-const updateGear = (gear: SteeringGear): Promise<SteeringGear> => {
-	if (!gear || !gear.id) {
-		return Promise.reject(new Error("Invalid Gear data"));
-	}
-	const { id, ...gearData } = gear;
-	return fetch(`${baseUrl}/gearData/${id}`, {
-		body: JSON.stringify(gearData),
-		method: "PATCH",
+const updateGear = (
+	gear: Partial<SteeringGear> & { id: number }
+): Promise<SteeringGear> => {
+	const body = JSON.stringify(
+		Object.fromEntries(Object.entries(gear).filter(([_, v]) => v !== undefined))
+	);
+
+	return fetch(`${baseUrl}/gearData/${gear.id}`, {
+		method: "PUT",
 		headers: {
 			"Content-Type": "application/json",
 		},
-	}).then((response) => response.json());
+		body,
+	}).then((response) => {
+		if (!response.ok) {
+			throw new Error("Failed to update gear");
+		}
+		return response.json();
+	});
 };
 
 const getAllUsers = (): Promise<User[]> => {

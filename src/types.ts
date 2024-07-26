@@ -1,5 +1,5 @@
 export type SteeringGear = {
-	id?: number;
+	id: number;
 	partNumber: string;
 	ratio: string;
 	rotation: string;
@@ -12,15 +12,15 @@ export type SteeringGear = {
 };
 
 export type Note = {
-	id?: number;
+	id: number;
 	title: string;
-	userId?: number;
+	userId: number;
 	gearId: number;
 	content: string;
 };
 
 export type User = {
-	id?: number;
+	id: number;
 	username: string;
 	password: string;
 };
@@ -46,5 +46,5 @@ export type TAppContext = {
 	deleteNote: (id: number) => void;
 	createUser: (user: User) => void;
 	deleteUser: (id: number) => void;
-	editGear: (updatedGear: SteeringGear) => Promise<void>;
+	editGear: (gear: Partial<SteeringGear> & { id: number }) => Promise<void>;
 };

@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router";
 import toast from "react-hot-toast";
-import ActiveGear from "./ActiveGear";
+import { SteeringGear } from "../types";
 
 interface EditGearFormProps {}
 
@@ -24,9 +24,9 @@ const EditGearForm: React.FC<EditGearFormProps> = () => {
 	const [turns, setTurns] = useState<string>("");
 	const [tbar, setTbar] = useState<string>("");
 	const [mountLocation, setMountLocation] = useState<string>("");
-	const [img, setImg] = useState<string>("");
+	const [image, setImage] = useState<string>("");
 
-	const { activeUser, activeSteeringGear, editGear } = useContext(AppContext);
+	const { activeSteeringGear, editGear } = useContext(AppContext);
 	const navigate = useNavigate();
 	const theme = useTheme();
 
@@ -41,17 +41,43 @@ const EditGearForm: React.FC<EditGearFormProps> = () => {
 		setTurns("");
 		setTbar("");
 		setMountLocation("");
-		setImg(defaultImg);
+		setImage(defaultImg);
 	};
 
-	const handleGearSubmit = (event: React.FormEvent) => {
+	const handleGearSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
-		if (!activeUser) {
-			toast.error("Log in to edit gear");
-			return;
-		}
-		editGear();
-		reset();
+		if (!activeSteeringGear) return;
+
+		const updatedGear: Partial<SteeringGear> = {
+			id: activeSteeringGear.id,
+			partNumber:
+				partNumber.trim() !== "" ? partNumber : activeSteeringGear.partNumber,
+			ratio: ratio.trim() !== "" ? ratio : activeSteeringGear.ratio,
+			rotation: rotation.trim() !== "" ? rotation : activeSteeringGear.rotation,
+			sectorSpline:
+				sectorSpline.trim() !== ""
+					? sectorSpline
+					: activeSteeringGear.sectorSpline,
+			input: input.trim() !== "" ? input : activeSteeringGear.input,
+			turns: turns.trim() !== "" ? turns : activeSteeringGear.turns,
+			tbar: tbar.trim() !== "" ? tbar : activeSteeringGear.tbar,
+			mountLocation:
+				mountLocation.trim() !== ""
+					? mountLocation
+					: activeSteeringGear.mountLocation,
+			image: image.trim() !== "" ? image : activeSteeringGear.image,
+		};
+
+		editGear(updatedGear as SteeringGear)
+			.then(() => {
+				toast.success("Gear updated successfully");
+				reset();
+				navigate(-1);
+			})
+			.catch((error) => {
+				toast.error("Failed to update gear");
+				console.error(error);
+			});
 	};
 
 	const handleImageUpload = (event: ChangeEvent<HTMLInputElement>) => {
@@ -59,7 +85,7 @@ const EditGearForm: React.FC<EditGearFormProps> = () => {
 		if (file) {
 			const reader = new FileReader();
 			reader.onloadend = () => {
-				setImg(reader.result as string);
+				setImage(reader.result as string);
 			};
 			reader.readAsDataURL(file);
 		}
