@@ -144,7 +144,7 @@ export const ActiveGear: React.FC = () => {
 							variant="contained"
 							color="primary"
 							onClick={() => {
-								navigate(`/edit-gear/${activeSteeringGear?.id}`);
+								navigate(`/edit-gear/${activeSteeringGear?.id}` );
 							}}
 							sx={{ ml: 1 }}
 						>

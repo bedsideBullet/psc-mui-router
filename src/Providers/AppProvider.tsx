@@ -17,7 +17,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 	const fetchData = (): Promise<void> => {
 		return Requests.getAllGears().then((gears) => {
 			setAllGears(gears);
-			if (gears.length > 0) {
+			if (gears.length > 0 && activeSteeringGear !== gears[0]) {
 				setActiveSteeringGear(gears[0]);
 			}
 		});

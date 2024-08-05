@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useContext, useState } from "react";
+import React, { ChangeEvent, useContext, useEffect, useState } from "react";
 import { AppContext } from "../Providers/AppProvider";
 import {
 	Box,
@@ -32,7 +32,9 @@ const EditGearForm: React.FC<EditGearFormProps> = () => {
 
 	const defaultImg = "src/assets/images/img_placeholder_2.jpg";
 
-	setImage(defaultImg);
+	useEffect(() => {
+		setImage(defaultImg);
+	}, [defaultImg]);
 
 	const reset = () => {
 		setPartNumber("");
