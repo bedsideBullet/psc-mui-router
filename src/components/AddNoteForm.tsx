@@ -40,7 +40,7 @@ const AddNoteForm = () => {
 				title,
 				content,
 				gearId,
-				userId: Number(activeUser.id),
+				userId: activeUser.id,
 			});
 			reset();
 		}
@@ -93,7 +93,7 @@ const AddNoteForm = () => {
 				fullWidth
 				color="primary"
 				sx={{ color: theme.palette.text.secondary, mb: 2 }}
-				onChange={(e) => setGearId(Number(e.target.value))}
+				onChange={(e) => setGearId(e.target.value)}
 			>
 				{allGears.map((gear) => (
 					<MenuItem

@@ -77,7 +77,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 	};
 
 	const editGear = (
-		gear: Partial<SteeringGear> & { id: number }
+		gear: Partial<SteeringGear> & { id: string }
 	): Promise<void> => {
 		return Requests.updateGear(gear)
 			.then(() => fetchData())
@@ -90,7 +90,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 			});
 	};
 
-	const deleteGear = (id: number): Promise<void> => {
+	const deleteGear = (id: string): Promise<void> => {
 		if (!id) {
 			toast.error("Failed to delete");
 			return Promise.resolve();
@@ -114,7 +114,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 			});
 	};
 
-	const deleteNote = (id: number): Promise<void> => {
+	const deleteNote = (id: string) : Promise<void> => {
 		if (!id) {
 			toast.error("Failed to delete");
 			return Promise.resolve();
@@ -138,7 +138,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 			});
 	};
 
-	const deleteUser = (id: number): Promise<void> => {
+	const deleteUser = (id: string): Promise<void> => {
 		if (!id) {
 			toast.error("Failed to delete");
 			return Promise.resolve();
@@ -156,12 +156,12 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 
 	const noteDisplay = () => {
 		if (activeUser && activeSteeringGear) {
-			const userId = Number(activeUser.id);
-			const gearId = Number(activeSteeringGear.id);
+			const userId = activeUser.id;
+			const gearId = activeSteeringGear.id;
 
 			const matchingNote = notes.find(
 				(note) =>
-					Number(note.userId) === userId && Number(note.gearId) === gearId
+					note.userId === userId && note.gearId === gearId
 			);
 			if (matchingNote) {
 				return matchingNote.title;

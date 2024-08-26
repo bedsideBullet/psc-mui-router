@@ -19,7 +19,7 @@ const getAllGears = (): Promise<SteeringGear[]> => {
 };
 
 const updateGear = (
-	gear: Partial<SteeringGear> & { id: number }
+	gear: Partial<SteeringGear> & { id: string}
 ): Promise<SteeringGear> => {
 	const body = JSON.stringify(
 		Object.fromEntries(Object.entries(gear).filter(([_, v]) => v !== undefined))
@@ -81,7 +81,7 @@ const postGear = (gear: Omit<SteeringGear, "id">): Promise<SteeringGear> => {
 	}).then((response) => response.json());
 };
 
-const deleteGear = (id: number): Promise<void> => {
+const deleteGear = (id: string): Promise<void> => {
 	return fetch(`${baseUrl}/gearData/${id}`, {
 		method: "DELETE",
 	}).then((response) => {
@@ -106,7 +106,7 @@ const postNote = (note: Omit<Note, "id">): Promise<Note> => {
 	});
 };
 
-const deleteNote = (id: number): Promise<void> => {
+const deleteNote = (id: string): Promise<void> => {
 	return fetch(`${baseUrl}/notes/${id}`, {
 		method: "DELETE",
 	}).then((response) => {
@@ -126,7 +126,7 @@ const postUser = (user: Omit<User, "id">): Promise<User> => {
 	}).then((response) => response.json());
 };
 
-const deleteUser = (id: number): Promise<void> => {
+const deleteUser = (id: string): Promise<void> => {
 	return fetch(`${baseUrl}/users/${id}`, {
 		method: "DELETE",
 	}).then((response) => {
